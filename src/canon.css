@@ -1,0 +1,202 @@
+/* Canon — additive styles for the new platform UI (case tabs, provenance,
+   real audit chain, business model). Blends with the existing dark theme. */
+
+:root {
+  --canon-panel: #11161f;
+  --canon-panel-2: #0d1117;
+  --canon-border: #222a35;
+  --canon-text: #e6edf3;
+  --canon-muted: #8b97a7;
+  --canon-teal: #5eead4;
+  --canon-green: #34d399;
+  --canon-red: #f87171;
+  --canon-yellow: #fbbf24;
+  --canon-blue: #60a5fa;
+}
+
+/* ---- case selector -------------------------------------------------------- */
+.case-tabs {
+  display: flex;
+  gap: 12px;
+  margin: 0 0 14px;
+  flex-wrap: wrap;
+}
+.case-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--canon-border);
+  background: var(--canon-panel-2);
+  color: var(--canon-text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 220px;
+}
+.case-tab:hover { border-color: #36404e; }
+.case-tab.active {
+  border-color: var(--canon-teal);
+  box-shadow: 0 0 0 1px var(--canon-teal), 0 8px 24px rgba(94, 234, 212, 0.08);
+  background: rgba(94, 234, 212, 0.05);
+}
+.case-tab-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--canon-teal);
+  font-weight: 700;
+}
+.case-tab-label { font-size: 15px; font-weight: 600; }
+.case-summary {
+  color: var(--canon-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 22px;
+  max-width: 880px;
+}
+
+/* ---- break report extras -------------------------------------------------- */
+.exposure-pill {
+  margin-left: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--canon-red);
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 999px;
+  padding: 3px 12px;
+  vertical-align: middle;
+}
+.severity-medium { background: rgba(251, 191, 36, 0.14); color: var(--canon-yellow); }
+.severity-match { background: rgba(52, 211, 153, 0.12); color: var(--canon-green); }
+
+.conf-bar {
+  width: 64px;
+  height: 6px;
+  border-radius: 999px;
+  background: #1b222c;
+  overflow: hidden;
+}
+.conf-fill { height: 100%; background: linear-gradient(90deg, var(--canon-teal), var(--canon-green)); }
+.conf-num { font-size: 11px; color: var(--canon-muted); margin-top: 3px; }
+
+/* ---- provenance doc view -------------------------------------------------- */
+.span-quote {
+  display: block;
+  font-size: 11px;
+  color: #6b7787;
+  font-style: italic;
+  margin: 1px 0 8px;
+}
+.flag { color: var(--canon-red); font-size: 12px; font-weight: 600; }
+.doc-foot {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--canon-border);
+  font-size: 12px;
+  color: var(--canon-muted);
+}
+
+/* ---- audit chain ---------------------------------------------------------- */
+.audit-actions { display: flex; gap: 8px; align-items: center; }
+.audit-seq {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 7px;
+  background: rgba(94, 234, 212, 0.12);
+  color: var(--canon-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+.audit-actor { color: var(--canon-muted); font-weight: 400; }
+.hash-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  color: #5b95c9;
+  margin-top: 4px;
+}
+.verify-badge { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+.verify-badge.ok { color: var(--canon-green); background: rgba(52, 211, 153, 0.12); }
+.verify-badge.bad { color: var(--canon-red); background: rgba(248, 113, 113, 0.12); }
+.btn-mini {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--canon-border);
+  background: var(--canon-panel-2);
+  color: var(--canon-text);
+  cursor: pointer;
+}
+.btn-mini:disabled { opacity: 0.4; cursor: default; }
+.btn-mini:not(:disabled):hover { border-color: var(--canon-teal); }
+.audit-empty { color: var(--canon-muted); font-size: 13px; padding: 16px 0; }
+.audit-foot {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--canon-border);
+  font-size: 12px;
+  color: var(--canon-muted);
+  line-height: 1.6;
+}
+
+/* ---- business section ----------------------------------------------------- */
+#business { margin-top: 40px; }
+.biz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.biz-card {
+  background: var(--canon-panel);
+  border: 1px solid var(--canon-border);
+  border-radius: 14px;
+  padding: 20px;
+}
+.biz-card-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; color: var(--canon-text); }
+.biz-card p { color: var(--canon-muted); font-size: 13.5px; line-height: 1.65; margin: 0; }
+.biz-card strong, .model-cell strong { color: var(--canon-text); }
+.biz-card em { color: var(--canon-teal); font-style: normal; }
+
+.model-block {
+  background: var(--canon-panel);
+  border: 1px solid var(--canon-border);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 16px;
+}
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 14px 0;
+}
+.model-cell {
+  background: var(--canon-panel-2);
+  border: 1px solid var(--canon-border);
+  border-radius: 10px;
+  padding: 14px;
+}
+.model-h { font-weight: 700; color: var(--canon-teal); font-size: 13px; margin-bottom: 6px; }
+.model-cell p { color: var(--canon-muted); font-size: 13px; line-height: 1.55; margin: 0; }
+.margin-note { color: var(--canon-muted); font-size: 13px; line-height: 1.6; margin: 8px 0 0; }
+
+.mrr-table { width: 100%; border-collapse: collapse; margin: 14px 0 4px; }
+.mrr-table th, .mrr-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--canon-border);
+  font-size: 13.5px;
+}
+.mrr-table th { color: var(--canon-muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.mrr-table td:nth-child(n+2), .mrr-table th:nth-child(n+2) { text-align: right; }
+.mrr-table td:first-child { color: var(--canon-text); }
+.mrr-table .mrr-total td { font-weight: 700; color: var(--canon-text); border-bottom: none; border-top: 2px solid var(--canon-teal); }
+.mrr-table .mrr-total td:last-child { color: var(--canon-teal); }

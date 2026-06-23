@@ -1,0 +1,20 @@
+modules = ["nodejs-20"]
+run = "npm run dev"
+entrypoint = "src/App.tsx"
+hidden = ["node_modules", "dist", ".config"]
+
+[nix]
+channel = "stable-24_05"
+
+[env]
+PORT = "5173"
+
+[[ports]]
+localPort = 5173
+externalPort = 80
+
+# One-click deploy: builds the Vite app and serves the static bundle.
+[deployment]
+deploymentTarget = "static"
+publicDir = "dist"
+build = ["sh", "-c", "npm install && npm run build"]
